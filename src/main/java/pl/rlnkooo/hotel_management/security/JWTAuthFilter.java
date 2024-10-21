@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
+import pl.rlnkooo.hotel_management.service.CustomUserDetailsService;
 import pl.rlnkooo.hotel_management.utils.JWTUtils;
 
 import java.io.IOException;
@@ -24,7 +25,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
     private JWTUtils jwtUtils;
 
     @Autowired
-    private CachingUserDetailsService cachingUserDetailsService;
+    private CustomUserDetailsService customUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -42,7 +43,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         userEmail = jwtUtils.extractUsername(jwtToken);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = cachingUserDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = customUserDetailsService.loadUserByUsername(userEmail);
             if (jwtUtils.isValidToken(jwtToken, userDetails)) {
                 SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userDetails,
