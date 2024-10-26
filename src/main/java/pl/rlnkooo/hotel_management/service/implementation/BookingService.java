@@ -1,6 +1,5 @@
 package pl.rlnkooo.hotel_management.service.implementation;
 
-import org.hibernate.metamodel.mapping.ordering.ast.OrderByComplianceViolation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
