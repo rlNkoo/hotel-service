@@ -8,7 +8,7 @@ This is a Java-based backend application for managing hotel operations. The appl
 - **Registration**: Allows users to create an account with the necessary details.
 - **Login**: Authenticates users using their credentials.
 - **JWT Authorization**: Secures API endpoints with JSON Web Tokens (JWT) for authentication.
-- **Role Management**: Assigns roles to users (e.g., USER, ADMIN), determining their access levels within the application.
+- **Role Management**: Assigns roles to users (e.g., USER, ADMIN), determining their access levels within the application. 
 
 ### User Management
 - **Get All Users**: Admins can retrieve a list of all registered users.
